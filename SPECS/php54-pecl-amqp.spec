@@ -59,7 +59,7 @@ extension = %{pecl_name}.so
 ; Whether calls to AMQPQueue::get() and AMQPQueue::consume()
 ; should require that the client explicitly acknowledge messages. 
 ; Setting this value to 1 will pass in the AMQP_AUTOACK flag to
-: the above method calls if the flags field is omitted. 
+; the above method calls if the flags field is omitted. 
 ;amqp.auto_ack = 0
 
 ; The host to which to connect.
