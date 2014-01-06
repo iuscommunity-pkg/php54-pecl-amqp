@@ -5,8 +5,8 @@
 
 Summary:       Communicate with1 any AMQP compliant server
 Name:          %{php_base}-pecl-amqp
-Version:       1.0.9
-Release:       2.ius%{?dist}
+Version:       1.2.0
+Release:       1.ius%{?dist}
 License:       PHP
 Group:         Development/Languages
 URL:           http://pecl.php.net/package/amqp
@@ -44,7 +44,7 @@ from any queue.
 %setup -q -c
 
 # Upstream often forget to change this
-extver=$(sed -n '/"Version"/{s/.*"1/1/;s/".*$//;p}' %{pecl_name}-%{version}/amqp.c)
+extver=$(sed -n '/#define PHP_AMQP_VERSION/{s/.* "//;s/".*$//;p}' %{pecl_name}-%{version}/php_amqp.h)
 if test "x${extver}" != "x%{version}"; then
    : Error: Upstream version is ${extver}, expecting %{version}.
    exit 1
@@ -129,6 +129,12 @@ fi
 
 
 %changelog
+* Mon Jan 06 2014 Ben Harper <ben.harper@rackspace.com> - 1.2.0-1.ius
+- lastest stable release
+- corrected typo thanks for mfuery in this pull request:
+  https://github.com/iuscommunity-pkg/php54-pecl-amqp/pull/1
+- update sed based on updated SRPM from Remi
+
 * Tue Nov 20 2012 Ben Harper <ben.harper@rackspace.com> - 1.0.9-2.ius
 - adcpting from Fedora Rawhide srpm
 
